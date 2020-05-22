@@ -1,0 +1,28 @@
+{% extends 'order/base_order.html' %}
+{% load static %}
+
+{% block ext_css %}
+{{block.super}}
+<link rel="stylesheet" href="{% static 'axf/order/css/order_list_not_receive.css' %}">
+{% endblock %}
+
+{% block ext_js %}
+{{block.super}}
+<script type="text/javascript" src="{% static 'axf/order/js/order_list_not_receive.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+{{block.super}}
+<div class="order_list_not_receive" class="container">
+    <ol>
+        {% for order in orders %}
+        <li>
+            <h6>订单编号：{{order.id}}</h6>
+            <span>￥{{order.o_price}}</span>
+            <span>下单时间：{{order.o_time}}</span>
+            <button class="btn btn-success" id="order" orderid="{{order.id}}">订单详情</button>
+        </li>
+        {% endfor %}
+    </ol>
+</div>
+{% endblock %}
